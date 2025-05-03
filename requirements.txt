@@ -1,0 +1,7 @@
+fastapi>=0.95.0
+uvicorn>=0.21.1
+sqlalchemy>=2.0.0
+pydantic>=1.10.7
+pytest>=7.3.1
+httpx>=0.24.0  # Pour FastAPI TestClient
+pylint

@@ -1,0 +1,6 @@
+venv
+.pylintrc
+client_db.sqlite
+test_client_db.sqlite
+eval.ods
+DM_API_client.md
