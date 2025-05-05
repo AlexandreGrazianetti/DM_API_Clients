@@ -31,7 +31,7 @@ def test_create_client_duplicate_email(client, sample_clients):
         json={
             "nom": "Dupont",
             "prenom": "Jacques",
-            "email": "jean.dupont@example.com",  # Email déjà utilisé
+            "email": "jean.dupont@example.com",  
             "telephone": "0123456789",
             "actif": True
         }

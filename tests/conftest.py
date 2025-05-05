@@ -7,6 +7,7 @@ import time
 import gc
 from app.database import Base, get_db
 from app.main import app
+from app.routers.client_router import router as client_router
 from app.models import Client
 
 # Base de données de test

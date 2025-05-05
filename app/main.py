@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import engine
-from app.routes import client_router
+from app.routers.client_router import router as client_router
 from app import models
 
 # Création des tables dans la base de données
