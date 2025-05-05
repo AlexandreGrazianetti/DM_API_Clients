@@ -133,3 +133,8 @@ pip install sqlalchemy==2.0.27
 pip install pytest==8.0.0
 pip install email-validator==2.1.0
 ```
+## ✒️ Auteurs
+
+Marine ADAM
+Colas CHASSAGNON
+Alexandre GRAZIANETTI
