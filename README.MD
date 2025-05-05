@@ -1,175 +1,135 @@
-Voici le fichier `README.md` mis à jour avec les modifications que vous avez apportées :
+# 📦 API Clients – FastAPI
 
-```markdown
-# Guide d'installation et d'exécution de l'API Client
+Cette API permet de gérer une liste de clients : création, consultation, modification et suppression.  
+Elle est développée avec **FastAPI**, suit une **architecture modulaire (Router → Controller → Service)** et utilise **SQLAlchemy** pour l'accès à la base de données.
 
-Ce guide vous explique comment installer et exécuter l'API client FastAPI étape par étape, spécialement adapté pour Python 3.11.9.
+---
 
-## Prérequis
+## 🛠️ Prérequis
 
-- Python 3.11.9 installé
-- pip (gestionnaire de paquets Python)
-- Accès à un terminal/ligne de commande
+- Python **3.11.9** recommandé
+- `pip` installé
+- Un terminal ou invite de commande
 
-## 1. Structure du projet
+---
 
-Assurez-vous que votre structure de projet est correcte :
+## 📁 Structure du projet
 
 ```
 
-client_api/ <-- Dossier racine du projet
+client\_api/
 ├── app/
-│ ├── init.py
-│ ├── main.py
-│ ├── database.py
-│ ├── models.py
-│ ├── schemas.py
-│ └── routes/
-│ ├── init.py
-│ └── client.py
+│   ├── **init**.py
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── controllers/
+│   │   └── client\_controller.py
+│   ├── services/
+│   │   └── client\_service.py
+│   └── routes/
+│       └── client\_router.py
 ├── tests/
-│ ├── init.py
-│ ├── conftest.py
-│ ├── unit/
-│ │ ├── init.py
-│ │ └── test_models.py
-│ ├── integration/
-│ │ ├── init.py
-│ │ └── test_routes.py
-│ └── validation/
-│ ├── init.py
-│ └── test_api.py
+│   ├── unit/
+│   │   └── test\_models.py
+│   ├── integration/
+│   │   └── test\_routes.py
+│   └── conftest.py
 ├── requirements.txt
 └── run.py
 
 ````
 
-## 2. Création d'un environnement virtuel
+---
+
+## 🚀 Installation
+
+### 1. Créer un environnement virtuel
 
 ```bash
-# À la racine du projet (dossier client_api)
 python -m venv venv
-
-# Activation de l'environnement virtuel
-# Sur Windows:
+# Windows
 venv\Scripts\activate
-# Sur macOS/Linux:
+# Linux/macOS
 source venv/bin/activate
 ````
 
-## 3. Installation des dépendances
+### 2. Installer les dépendances
 
 ```bash
-# Assurez-vous que l'environnement virtuel est activé
 pip install -r requirements.txt
-```
-
-En cas d'erreur avec pip, essayez de mettre à jour pip lui-même :
-
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-## 4. Exécution de l'API
-
-```bash
-# À la racine du projet (dossier client_api)
-python run.py
-```
-
-L'API sera accessible à l'adresse : [http://localhost:8000](http://localhost:8000)
-
-La documentation de l'API est disponible à : [http://localhost:8000/docs](http://localhost:8000/docs)
-
-## 5. Exécution des tests
-
-```bash
-# Exécuter tous les tests
-pytest
-
-# Exécuter uniquement les tests unitaires
-pytest tests/unit/
-
-# Exécuter uniquement les tests d'intégration
-pytest tests/integration/
-
-# Exécuter uniquement les tests de validation
-pytest tests/validation/
-```
-
-## 6. Ajout de tests unitaires
-
-Le fichier `test_models.py` contient désormais des tests unitaires pour valider le bon fonctionnement des modèles de données.
-
-Voici quelques exemples de tests unitaires ajoutés :
-
-* **Test de création d'un client**
-* **Test de validation de l'unicité de l'email d'un client**
-
-Exécuter les tests unitaires :
-
-```bash
-pytest tests/unit/test_models.py
-```
-
-## Dépannage des erreurs d'importation
-
-Si vous rencontrez encore des erreurs d'importation :
-
-1. **Vérifiez le PYTHONPATH** : Assurez-vous que la racine du projet est dans votre PYTHONPATH
-
-```bash
-# Sur Windows
-set PYTHONPATH=%PYTHONPATH%;.
-
-# Sur macOS/Linux
-export PYTHONPATH=$PYTHONPATH:.
-```
-
-2. **Installation manuelle des dépendances** : Si des erreurs persistent avec un package spécifique, installez-le séparément :
-
-```bash
-pip install fastapi==0.109.2
-pip install pydantic==1.10.13
-pip install email-validator==2.1.0
-```
-
-3. **En cas d'erreur avec pytest** : Essayez d'installer pytest séparément
-
-```bash
-pip install pytest==8.0.0 pytest-asyncio==0.23.4
-```
-
-4. **Pour les problèmes de SQLAlchemy** :
-
-```bash
-pip install sqlalchemy==2.0.27
-```
-
-## Note sur les versions
-
-Les versions spécifiées dans ce guide sont compatibles avec Python 3.11.9. Si vous utilisez une version différente de Python, vous pourriez avoir besoin d'ajuster les versions des dépendances.
-
 ```
 
 ---
 
-### Modifications apportées :
-- **Ajout des tests unitaires** dans la section "Ajout de tests unitaires", avec des exemples de tests pour `Client` dans le fichier `test_models.py`.
-- Les commandes pour exécuter **les tests unitaires** spécifiquement sont ajoutées dans la section "Exécution des tests".
+## ▶️ Lancer l'application
+
+```bash
+python run.py
 ```
-6. Endpoints de l'API
-L'API dispose des endpoints suivants pour gérer les clients. Vous pouvez interagir avec ces routes via des requêtes HTTP standard (GET, POST, PUT, DELETE).
 
-Méthode |	Endpoint	| Description
+L'API sera disponible à :
 
-POST	|  /clients/    | Crée un nouveau client
+* **[http://localhost:8000](http://localhost:8000)**
+* Documentation interactive : **[http://localhost:8000/docs](http://localhost:8000/docs)**
 
-GET   	|  /clients/    |	Récupère tous les clients avec pagination et filtrage
+---
 
-GET     |/clients/{client_id} |	Récupère un client spécifique par son ID
+## 📡 Endpoints disponibles
 
-PUT	    |   /clients/{client_id} |	Met à jour un client spécifique
+| Méthode | URL                    | Description                               | Code retour                                  |
+| ------- | ---------------------- | ----------------------------------------- | -------------------------------------------- |
+| POST    | `/clients/`            | Créer un nouveau client                   | `201 Created`                                |
+| GET     | `/clients/`            | Lister les clients (filtrage, pagination) | `200 OK`                                     |
+| GET     | `/clients/{client_id}` | Récupérer un client par ID                | `200 OK`, `404 Not Found`                    |
+| PUT     | `/clients/{client_id}` | Mettre à jour un client                   | `200 OK`, `404 Not Found`, `400 Bad Request` |
+| DELETE  | `/clients/{client_id}` | Supprimer un client                       | `204 No Content`, `404 Not Found`            |
 
-DELETE	|/clients/{client_id}	 |Supprime un client spécifique
+### Paramètres disponibles pour `GET /clients/`
+
+* `skip` (int, default: 0) : décalage pour la pagination
+* `limit` (int, default: 100) : nombre maximum de résultats
+* `actif` (bool) : filtrer par statut actif
+
+---
+
+## ✅ Exécution des tests
+
+### Exécuter tous les tests
+
+```bash
+pytest
+```
+
+### Par catégorie
+
+```bash
+pytest tests/unit/
+pytest tests/integration/
+```
+
+---
+
+## 🧯 Dépannage
+
+### Erreur d'import
+
+Ajoutez la racine du projet à votre `PYTHONPATH` :
+
+```bash
+# Windows
+set PYTHONPATH=%PYTHONPATH%;.
+# Linux/macOS
+export PYTHONPATH=$PYTHONPATH:.
+```
+
+### Installer manuellement les paquets si besoin
+
+```bash
+pip install fastapi==0.109.2
+pip install pydantic==1.10.13
+pip install sqlalchemy==2.0.27
+pip install pytest==8.0.0
+pip install email-validator==2.1.0
+```
