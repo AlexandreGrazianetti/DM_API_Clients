@@ -40,7 +40,7 @@ def test_engine():
         if os.path.exists("./test_client_db.sqlite"):
             os.remove("./test_client_db.sqlite")
     except PermissionError as e:
-        print(f"⚠️ Impossible de supprimer test_client_db.sqlite : {e}")
+        print(f"Impossible de supprimer test_client_db.sqlite : {e}")
 
 @pytest.fixture(scope="function")
 def test_db(test_engine):
