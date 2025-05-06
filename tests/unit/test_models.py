@@ -1,4 +1,3 @@
-# test_models.py
 import pytest
 from app.models import Client
 from app.database import SessionLocal

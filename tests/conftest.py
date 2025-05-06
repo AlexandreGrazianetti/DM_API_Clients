@@ -1,13 +1,13 @@
+import time
+import gc
 import os
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
-import time
-import gc
+
 from app.database import Base, get_db
 from app.main import app
-from app.routers.client_router import router as client_router
 from app.models import Client
 
 # Base de données de test
@@ -43,10 +43,10 @@ def test_engine():
         print(f"Impossible de supprimer test_client_db.sqlite : {e}")
 
 @pytest.fixture(scope="function")
-def test_db(test_engine):
+def test_db_function(test_engine):
     """Crée une session de base de données de test."""
-    TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
-    db = TestingSessionLocal()
+    testing_session_local = sessionmaker(autocommit=False, autoflush=False, bind=test_engine)
+    db = testing_session_local()
     
     try:
         yield db

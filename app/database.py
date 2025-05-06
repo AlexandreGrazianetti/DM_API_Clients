@@ -1,8 +1,11 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,declarative_base
+from dotenv import load_dotenv
 
-# Utilisation d'une base de données SQLite pour simplifier
-SQLALCHEMY_DATABASE_URL = "sqlite:///./client_db.sqlite"
+load_dotenv()
+
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Création du moteur de base de données
 engine = create_engine(

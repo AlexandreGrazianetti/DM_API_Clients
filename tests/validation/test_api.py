@@ -2,12 +2,12 @@ import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker
 
-from app.main import app  # Assure-toi que 'app' est bien importé depuis le bon module
-from app.database import Base, get_db, SQLALCHEMY_DATABASE_URL  # Importe Base aussi
+from app.main import app
+from app.database import Base, get_db
 
-# Configuration pour la base de données de test
+
 TEST_SQLALCHEMY_DATABASE_URL = "sqlite:///./test_client_db.sqlite"  # Base de test
 
 # Création du moteur et session pour la base de données de test

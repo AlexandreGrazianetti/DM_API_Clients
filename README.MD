@@ -19,25 +19,27 @@ Elle est développée avec **FastAPI**, suit une **architecture modulaire (Route
 
 client\_api/
 ├── app/
-│   ├── **init**.py
+│   ├── __init__.py
 │   ├── main.py
 │   ├── database.py
 │   ├── models.py
 │   ├── schemas.py
 │   ├── controllers/
-│   │   └── client\_controller.py
+│   │   └── client_controller.py
 │   ├── services/
-│   │   └── client\_service.py
+│   │   └── client_service.py
 │   └── routes/
-│       └── client\_router.py
+│       └── client_router.py
 ├── tests/
 │   ├── unit/
-│   │   └── test\_models.py
+│   │   └── test_models.py
 │   ├── integration/
-│   │   └── test\_routes.py
+│   │   └── test_routes.py
+|   ├── validation/
+│   │   └── test_api.py
 │   └── conftest.py
 ├── requirements.txt
-└── run.py
+└── main.py
 
 ````
 
@@ -66,7 +68,7 @@ pip install -r requirements.txt
 ## ▶️ Lancer l'application
 
 ```bash
-python run.py
+python main.py
 ```
 
 L'API sera disponible à :
